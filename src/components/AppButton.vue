@@ -7,15 +7,18 @@ const props = withDefaults(defineProps<{
     variant?: ButtonVariants['variant']
     size?: ButtonVariants['size']
     class?: string
+    hasPadding?: boolean
 }>(), {
     variant: 'default',
     size: 'default',
     class: '',
+    hasPadding: true,
 })
 </script>
 
 <template>
-    <Button :class="cn('cursor-pointer p-7 rounded-lg text-base', props.class)" :variant="variant" :size="size">
+    <Button :class="cn('cursor-pointer rounded-lg text-base', props.hasPadding ? 'p-7' : '', props.class)"
+        :variant="variant" :size="size">
         <slot />
     </Button>
 </template>

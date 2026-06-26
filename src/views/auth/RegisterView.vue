@@ -7,9 +7,6 @@ import FormItem from '@/components/ui/form/FormItem.vue';
 import FormDescription from '@/components/ui/form/FormDescription.vue';
 import FormMessage from '@/components/ui/form/FormMessage.vue';
 
-import { toTypedSchema } from '@vee-validate/zod'
-import { useForm } from 'vee-validate'
-import * as z from 'zod'
 import AppInput from '@/components/AppInput.vue';
 import AppButton from '@/components/AppButton.vue';
 import { User, Mail, Lock, Zap, Users, JoystickIcon } from '@lucide/vue';
@@ -19,39 +16,9 @@ import { cn } from '@/lib/utils';
 
 import Logo from '@/assets/logo.svg';
 import GoogleLogo from '@/assets/google.svg';
-import { useAuth } from '@/composables/useAuth';
-import { toast } from 'vue-sonner';
+import { useRegisterForm } from '@/composables/useRegisterForm';
 
-const formSchema = toTypedSchema(z.object({
-    name: z.string().min(2).max(50),
-    email: z.string().email(),
-    password: z.string().min(6),
-    password_confirmation: z.string().min(6),
-    terms: z.boolean().refine((value) => value, {
-        message: "You must accept the terms and conditions",
-        path: ["terms"],
-    })
-}).refine((data) => data.password === data.password_confirmation, {
-    message: "Passwords do not match",
-    path: ["password_confirmation"],
-}));
-
-const form = useForm({
-    validationSchema: formSchema,
-    initialValues: {
-        name: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
-        terms: false,
-    },
-})
-
-const { register, loading, error } = useAuth();
-
-const onSubmit = form.handleSubmit(async (values) => {
-    await register(values)
-})
+const { form, onSubmit, loading, error } = useRegisterForm()
 </script>
 
 <template>
@@ -63,7 +30,7 @@ const onSubmit = form.handleSubmit(async (values) => {
                         <RouterLink to="/"><img alt="GameTrackr logo" class="w-full max-w-80" :src=Logo /></RouterLink>
                     </div>
                     <div class="flex gap-10">
-                        <Link to="/auth/login" class="text-lg">Community</Link>
+                        <Link to="/community" class="text-lg">Community</Link>
                         <Link to="/auth/login" class="text-lg">Explore</Link>
                         <Link to="/auth/login" class="text-lg">Login</Link>
                     </div>

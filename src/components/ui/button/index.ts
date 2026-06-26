@@ -21,6 +21,9 @@ export const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
+        "blue-outline":
+          "bg-graphite text-secondary-blue hover:border-light-graphite border border-light-graphite hover:bg-light-graphite",
+        graphite: "text-white bg-light-graphite border border-transparent cursor-pointer",
       },
       size: {
         "default": "h-9 px-4 py-2 has-[>svg]:px-3",

@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { cn } from '@/lib/utils';
+import type { HTMLAttributes } from 'vue';
 import { RouterLink } from 'vue-router';
 
 const props = defineProps<{
     to: string,
-    class?: string
+    class?: HTMLAttributes['class']
 }>()
 </script>
 

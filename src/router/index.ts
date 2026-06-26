@@ -10,6 +10,18 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: '/community',
+      name: 'community',
+      component: () => import('../views/CommunityView.vue'),
+      children: [
+        {
+          path: 'post/:community/:slug',
+          name: 'post',
+          component: () => import('../views/PostView.vue'),
+        }
+      ],
+    },
+    {
       path: '/auth',
       name: 'auth',
       children: [

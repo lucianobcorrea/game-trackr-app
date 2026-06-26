@@ -138,3 +138,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .custom-container {
+    @apply mx-auto py-14 px-4 md:px-8 lg:px-12;
+  }
+}

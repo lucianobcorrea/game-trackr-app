@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { useAuthStore } from '@/stores/authStore.ts';
-import TheWelcome from '../components/TheWelcome.vue'
-
-const authStore = useAuthStore();
-console.log(authStore.token)
+import Header from '@/components/layout/Header.vue';
+import Footer from '@/components/layout/Footer.vue';
 </script>
 
 <template>
+  <Header />
   <main>
-    <TheWelcome />
+
   </main>
+  <Footer />
 </template>
