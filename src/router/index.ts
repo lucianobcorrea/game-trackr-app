@@ -11,19 +11,18 @@ const router = createRouter({
     },
     {
       path: '/community',
-      name: 'community',
-      component: () => import('../views/CommunityView.vue'),
-      children: [
-        {
-          path: 'post/:community/:slug',
-          name: 'post',
-          component: () => import('../views/PostView.vue'),
-        }
-      ],
+      name: 'community-home',
+      component: () => import('../views/CommunityHub.vue'),
+    },
+    {
+      path: '/community/:slug',
+      name: 'community-page',
+      component: () => import('../views/CommunityPage.vue'),
     },
     {
       path: '/auth',
       name: 'auth',
+      component: () => import('../views/auth/AuthLayoutView.vue'),
       children: [
         {
           path: 'login',

@@ -7,9 +7,14 @@ import Header from '@/components/layout/Header.vue';
 import Post from '@/components/Post.vue';
 import SidebarProvider from '@/components/ui/sidebar/SidebarProvider.vue';
 import Spinner from '@/components/ui/spinner/Spinner.vue';
-import { useCommunities } from '@/composables/useCommunities';
+import { useJoinCommunity } from '@/composables/useJoinCommunity';
+import { useLeaveCommunity } from '@/composables/useLeaveCommunity';
+import { useCommunities } from '@/composables/useListCommunities';
+import { RouterView } from 'vue-router';
 
-const { communities, loading, error } = useCommunities(5);
+const { communities, loading, error, refresh } = useCommunities(5);
+const { join, loading: loadingJoin, error: errorJoin } = useJoinCommunity(refresh);
+const { leave, loading: loadingLeave, error: errorLeave } = useLeaveCommunity(refresh);
 </script>
 
 <template>
@@ -36,10 +41,16 @@ const { communities, loading, error } = useCommunities(5);
                         </template>
 
                         <template v-else>
-                            <div class="flex flex-col gap-5">
+                            <div class="flex flex-col gap-5" v-if="communities?.length > 0">
                                 <CommunityListItem v-for="community in communities" :key="community.id"
-                                    :id="community.id" :title="community.title" :description="community.description"
+                                    :join="() => join(community.id)" :leave="() => leave(community.id)"
+                                    :isMember="community.is_member" :slug="community.slug" :id="community.id"
+                                    :title="community.title" :description="community.description"
                                     :members="community.members.length" :avatar="community.avatar_url" />
+                            </div>
+
+                            <div v-else>
+                                <p class="text-center text-gray-500">No communities found.</p>
                             </div>
                         </template>
                     </template>
@@ -51,4 +62,5 @@ const { communities, loading, error } = useCommunities(5);
             </section>
         </main>
     </SidebarProvider>
+    <RouterView />
 </template>

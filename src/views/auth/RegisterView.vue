@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Link from '@/components/Link.vue';
-import { RouterLink } from 'vue-router';
 import Footer from '@/components/layout/Footer.vue';
 import { FormField } from '@/components/ui/form';
 import FormItem from '@/components/ui/form/FormItem.vue';
@@ -14,29 +13,16 @@ import Checkbox from '@/components/ui/checkbox/Checkbox.vue';
 import Label from '@/components/ui/label/Label.vue';
 import { cn } from '@/lib/utils';
 
-import Logo from '@/assets/logo.svg';
 import GoogleLogo from '@/assets/google.svg';
 import { useRegisterForm } from '@/composables/useRegisterForm';
+import AuthHeader from '@/components/layout/AuthHeader.vue';
 
-const { form, onSubmit, loading, error } = useRegisterForm()
+const { onSubmit, loading, error } = useRegisterForm()
 </script>
 
 <template>
     <div class="flex flex-col min-h-screen">
-        <header class="py-10 absolute top-0 w-full z-10">
-            <div class="mx-auto px-4 md:px-8 lg:px-12">
-                <div class="flex justify-between flex-row items-center">
-                    <div>
-                        <RouterLink to="/"><img alt="GameTrackr logo" class="w-full max-w-80" :src=Logo /></RouterLink>
-                    </div>
-                    <div class="flex gap-10">
-                        <Link to="/community" class="text-lg">Community</Link>
-                        <Link to="/auth/login" class="text-lg">Explore</Link>
-                        <Link to="/auth/login" class="text-lg">Login</Link>
-                    </div>
-                </div>
-            </div>
-        </header>
+        <AuthHeader />
         <main class="grid grid-cols-2 flex-1 h-full">
             <div
                 class="w-full h-full bg-linear-to-r/decreasing from-black via-dark-blue/40 to-dark-blue flex flex-col justify-center p-16">
@@ -164,6 +150,12 @@ const { form, onSubmit, loading, error } = useRegisterForm()
                             <img :src=GoogleLogo alt="Google logo" class="max-w-10" />Sign in with
                             Google
                         </a>
+                    </div>
+
+                    <div class="flex justify-center items-center">
+                        <p class="text-base text-olive-light">Already have an account? <Link to="/auth/login"
+                                :class="cn('text-base text-secondary-blue hover:text-secondary-blue')">Login</Link>
+                        </p>
                     </div>
                 </div>
             </div>

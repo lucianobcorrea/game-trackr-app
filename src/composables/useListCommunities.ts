@@ -1,5 +1,5 @@
 import { ref, onMounted } from 'vue'
-import { listCommunities, type Community } from '@/api/community/listCommunities'
+import { listCommunities, type Community } from '@/api/community/list'
 import { toast } from 'vue-sonner'
 
 export function useCommunities(per_page = 15) {

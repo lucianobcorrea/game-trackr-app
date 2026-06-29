@@ -14,3 +14,8 @@ export const registerSchema = toTypedSchema(z.object({
     message: "Passwords do not match",
     path: ["password_confirmation"],
 }))
+
+export const loginSchema = toTypedSchema(z.object({
+    email: z.string().email(),
+    password: z.string().min(6),
+}))

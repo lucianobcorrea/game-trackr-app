@@ -8,6 +8,7 @@ export type Community = {
     slug: string,
     description: string,
     members: [];
+    is_member: boolean;
     avatar_url: string;
     cover_url: string;
 }
