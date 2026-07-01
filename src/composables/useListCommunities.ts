@@ -14,7 +14,7 @@ export function useCommunities(per_page = 15) {
             const response = await listCommunities(per_page)
             communities.value = response.data
         } catch (err: any) {
-            toast.error(err.response?.data?.message ?? 'Error fetching communities')
+            toast.error(err.response?.data?.error ?? 'Error fetching communities')
         } finally {
             loading.value = false
         }

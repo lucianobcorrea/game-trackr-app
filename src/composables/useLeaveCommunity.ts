@@ -13,7 +13,7 @@ export function useLeaveCommunity(onSuccess: () => void) {
             await leaveCommunity(communityId);
             onSuccess();
         } catch (err: any) {
-            toast.error(err.response?.data?.message ?? 'Error leaving community')
+            toast.error(err.response?.data?.error ?? 'Error leaving community')
         } finally {
             loading.value = false
         }

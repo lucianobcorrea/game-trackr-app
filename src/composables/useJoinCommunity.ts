@@ -13,7 +13,7 @@ export function useJoinCommunity(onSuccess: () => void) {
             await joinCommunity(communityId);
             onSuccess();
         } catch (err: any) {
-            toast.error(err.response?.data?.message ?? 'Error joining community')
+            toast.error(err.response?.data?.error ?? 'Error joining community')
         } finally {
             loading.value = false
         }

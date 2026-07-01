@@ -32,7 +32,7 @@ export function useStoreCommunity() {
                 }
             })
         } catch (err: any) {
-            toast.error(err.response?.data?.message ?? 'Error creating community')
+            toast.error(err.response?.data?.error ?? 'Error creating community')
         } finally {
             loading.value = false
         }

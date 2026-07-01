@@ -19,22 +19,11 @@ axiosInstance.interceptors.request.use((config) => {
 
 axiosInstance.interceptors.response.use(
     (response) => response,
-    (error) => {
-        if (
-            error.response?.status === 401 &&
-            router.currentRoute.value.path !== "/auth/login"
-        ) {
-            router.push("/auth/login");
-        }
-        return Promise.reject(error);
-    },
-);
-
-axiosInstance.interceptors.response.use(
-    (response) => response,
     async (error) => {
         const originalRequest = error.config;
+        const authStore = useAuthStore();
 
+        // only try refresh on 401
         if (
             error.response?.status === 401 &&
             !originalRequest._retry &&
@@ -43,20 +32,33 @@ axiosInstance.interceptors.response.use(
             originalRequest._retry = true;
 
             try {
-                const authStore = useAuthStore();
-                const response = await axiosInstance.post('/api/auth/refresh');
-                authStore.setToken(response.data.token);
-                originalRequest.headers.Authorization = `Bearer ${response.data.token}`;
-
+                const { token } = await refresh();
+                authStore.setToken(token);
+                originalRequest.headers.Authorization = `Bearer ${token}`;
                 return await axiosInstance(originalRequest);
-            } catch {
-                const authStore = useAuthStore();
-                authStore.clearAuth();
-                router.push('/auth/login');
-                return Promise.reject(error);
+            } catch (retryError: any) {
+                // only clear auth if 401, other errors let pass
+                if (retryError.response?.status === 401) {
+                    authStore.clearAuth();
+                    router.push('/auth/login');
+                    return Promise.reject(retryError);
+                }
+                // 400, 403, 500... only reject without redirect
+                return Promise.reject(retryError);
             }
         }
 
+        // only redirect to login on 401 AND if not refresh route
+        if (
+            error.response?.status === 401 &&
+            !originalRequest.url?.includes('/auth/refresh') &&
+            router.currentRoute.value.path !== '/auth/login'
+        ) {
+            authStore.clearAuth();
+            router.push('/auth/login');
+        }
+
+        // any other error (400, 403, 500...) only reject without redirect
         return Promise.reject(error);
     }
 );

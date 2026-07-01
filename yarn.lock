@@ -490,10 +490,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@lucide/vue@^1.22.0":
-  version "1.22.0"
-  resolved "https://registry.yarnpkg.com/@lucide/vue/-/vue-1.22.0.tgz#ab1d138e4ce9c410a9ebdd2654a72cf118b93e0b"
-  integrity sha512-2/+mGF+NrHieiGTwq5wHRVsLhtzoY8x64ovvQkVYDXLrLHKqE/58xR/hveFsxkH0Ey4M8UsvsYNxAHjPgbTyqQ==
+"@lucide/vue@^1.23.0":
+  version "1.23.0"
+  resolved "https://registry.yarnpkg.com/@lucide/vue/-/vue-1.23.0.tgz#63429e885cdb016bf42c19197b2331004a95a68c"
+  integrity sha512-9SIYeY5K+R1iv8F8JUKMGSL7Pck/86BJ8djtZz/lnYsoHtKFUj1H2z6+PvKnC/8blZ8tqTDeDXAoTKobuX80hg==
 
 "@napi-rs/wasm-runtime@^1.1.4":
   version "1.1.5"
@@ -1740,6 +1740,21 @@ file-entry-cache@^8.0.0:
   dependencies:
     flat-cache "^4.0.0"
 
+filepond-plugin-file-validate-type@^1.2.9:
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-file-validate-type/-/filepond-plugin-file-validate-type-1.2.9.tgz#84787c027354a459d91382e77adc9463ceb0182d"
+  integrity sha512-Tzv07aNdZvjUXDRA3XL16QMEvh6llDrXlcZ6W0eTHQ+taHaVg/JKJTFs/AViO+6ZcpPCcQStbhYEL2HoS+vldw==
+
+filepond-plugin-image-preview@^4.6.12:
+  version "4.6.12"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-preview/-/filepond-plugin-image-preview-4.6.12.tgz#adcff8be50f001e21ca8221a53c6870b63ebe0fe"
+  integrity sha512-Y8ETX5QVV0mbPB0586UH8AUmG9tZg8PuN5bdEAIlZVJFTct5ebViJ7+Am94/VhTPjLqZjBf1zmDq5JU6XRsZKw==
+
+filepond@^4.32.12:
+  version "4.32.12"
+  resolved "https://registry.yarnpkg.com/filepond/-/filepond-4.32.12.tgz#ddc6551401d0ee1602c577affa75409daf6a21ce"
+  integrity sha512-wro0/deLwua9CkL7HJygOlDaPo1c7Ov8kfzbZjH7m4hdi56gdHGDeRWnYa+qXnRm3Lty69gUGVFb3JZy/9vT8g==
+
 fill-range@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/fill-range/-/fill-range-7.1.1.tgz#44265d3cac07e3ea7dc247516380643754a05292"
@@ -2793,6 +2808,11 @@ vue-eslint-parser@^10.4.0, vue-eslint-parser@^10.4.1:
     espree "^10.3.0 || ^11.0.0"
     esquery "^1.6.0"
     semver "^7.6.3"
+
+vue-filepond@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/vue-filepond/-/vue-filepond-8.0.0.tgz#8f63f2f372726d7655372171eb6af370ecb180c6"
+  integrity sha512-FluypMbKJIcOfDi9gT34RQm7MkLDxnPbHQ4VrzNydAUTI1aMYVb1GhJGJjsz/iEtqAfR4V61BCN1TtWuXmTLsg==
 
 vue-router@^5.1.0:
   version "5.1.0"

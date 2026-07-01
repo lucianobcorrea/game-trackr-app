@@ -1,6 +1,6 @@
 import { useForm } from 'vee-validate'
 import { loginSchema } from '@/schemas/auth'
-import { useAuth } from '@/composables/useAuth'
+import { useLogin } from './auth/useLogin'
 
 export function useLoginForm() {
     const form = useForm({
@@ -11,11 +11,11 @@ export function useLoginForm() {
         },
     })
 
-    const { login, loading, error } = useAuth()
+    const { login, loading } = useLogin()
 
     const onSubmit = form.handleSubmit(async (values) => {
         await login(values)
     })
 
-    return { form, onSubmit, loading, error }
+    return { form, onSubmit, loading }
 }

@@ -5,6 +5,9 @@ import AvatarFallback from './ui/avatar/AvatarFallback.vue';
 import AvatarImage from './ui/avatar/AvatarImage.vue';
 import AppButton from './AppButton.vue';
 import { RouterLink } from 'vue-router';
+import Tooltip from './ui/tooltip/Tooltip.vue';
+import TooltipTrigger from './ui/tooltip/TooltipTrigger.vue';
+import TooltipContent from './ui/tooltip/TooltipContent.vue';
 
 defineProps<{
     id: number;
@@ -17,6 +20,7 @@ defineProps<{
     join: () => void;
     leave: () => void;
 }>()
+
 </script>
 
 <template>
@@ -40,14 +44,28 @@ defineProps<{
             </div>
         </RouterLink>
 
-        <AppButton v-if="!isMember" variant="graphite" :has-padding="false" @click="join()">
-            <PlusIcon />
-            Join
-        </AppButton>
+        <Tooltip v-if="!isMember">
+            <TooltipTrigger as-child>
+                <AppButton variant="graphite" :has-padding="false" @click="join()">
+                    <PlusIcon />
+                    Join
+                </AppButton>
+            </TooltipTrigger>
+            <TooltipContent>
+                <p>Click to join</p>
+            </TooltipContent>
+        </Tooltip>
 
-        <AppButton v-else variant="graphite" :has-padding="false" @click="leave()">
-            <CheckIcon />
-            Joined
-        </AppButton>
+        <Tooltip v-else>
+            <TooltipTrigger as-child>
+                <AppButton variant="graphite" :has-padding="false" @click="leave()">
+                    <CheckIcon />
+                    Joined
+                </AppButton>
+            </TooltipTrigger>
+            <TooltipContent>
+                <p>Click to leave</p>
+            </TooltipContent>
+        </Tooltip>
     </div>
 </template>

@@ -23,7 +23,7 @@ const emit = defineEmits<{
           </DialogDescription>
         </slot>
       </DialogHeader>
-      
+
       <div class="mt-4">
         <slot />
       </div>

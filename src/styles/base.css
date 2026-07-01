@@ -83,3 +83,37 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.filepond-custom .filepond--root {
+  font-family: inherit;
+}
+
+.filepond-custom .filepond--drop-label {
+  color: #cbd1c2;
+  background-color: #282e37;
+  border-radius: 0.5rem;
+}
+
+.filepond-custom .filepond--panel-root {
+  background-color: #282e37;
+  border: 1px solid #282e37;
+  border-radius: 0.5rem;
+}
+
+.filepond-custom .filepond--item-panel {
+  background-color: #1a1f26;
+}
+
+.filepond-custom .filepond--label-action {
+  color: #B5FF3A;
+  text-decoration-color: #B5FF3A;
+}
+
+.filepond-custom .filepond--file-action-button {
+  background-color: #B5FF3A;
+  color: #070D1C;
+}
+
+.filepond-custom [data-filepond-item-state='processing-complete'] .filepond--item-panel {
+  background-color: #709e25;
+}

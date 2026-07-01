@@ -20,6 +20,11 @@ const router = createRouter({
       component: () => import('../views/CommunityPage.vue'),
     },
     {
+      path: '/posts/create',
+      name: 'create-post',
+      component: () => import('../views/CreatePostView.vue'),
+    },
+    {
       path: '/auth',
       name: 'auth',
       component: () => import('../views/auth/AuthLayoutView.vue'),
